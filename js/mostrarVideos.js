@@ -20,10 +20,17 @@ export default function criarCard(video) {
 }
 
 async function listarVideos() { 
-    const videos = await conectaApi.listarVideos();
-    videos.forEach(video => {
-        itemListaVideos.appendChild(criarCard(video));
-    });
+    try {
+        const videos = await conectaApi.listarVideos();
+        videos.forEach(video => {
+            itemListaVideos.appendChild(criarCard(video));
+        });
+    } catch {
+        itemListaVideos.innerHTML = `
+        <h2 class="mensagem__titulo" style="margin: 0 auto;">
+            Não foi possível carregar a lista de vídeos
+        </h2>`;
+    }
 }
 
 listarVideos();

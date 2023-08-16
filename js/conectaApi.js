@@ -20,6 +20,9 @@ async function criarVideo(titulo, descricao, url, imagem) {
             imagem: imagem
         })
     });
+    if (!conexao.ok) {
+        throw new Error('Error: não foi possível criar o vídeo');
+    }
 
     const conexaoJsonResponse = await conexao.json();
     return conexaoJsonResponse;

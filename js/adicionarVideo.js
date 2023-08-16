@@ -13,8 +13,11 @@ async function criarVideo(evento) {
 
     const descricao = Math.floor(Math.random() * 50 + 1).toString();
     
-    await conectaApi.criarVideo(titulo, descricao, url, imagem);
-
-    window.location.href = '../pages/envio-concluido.html';
+    try {
+        await conectaApi.criarVideo(titulo, descricao, url, imagem);
+        window.location.href = '../pages/envio-concluido.html';
+    } catch (error) {
+        alert(error.message);
+    }
 }
 

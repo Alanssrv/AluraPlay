@@ -17,4 +17,11 @@ async function buscarVideos(evento) {
     videos.forEach(video => {
         itemListaVideos.appendChild(criarCard(video))
     });
+
+    if (videos.length == 0) {
+        itemListaVideos.innerHTML = `
+        <h2 class="mensagem__titulo" style="margin: 0 auto;">
+            Não foram encontrados vídeos com o termo '${termoPesquisa}'
+        </h2>`;
+    }
 }
